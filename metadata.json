@@ -1,0 +1,7 @@
+{
+  "uuid": "mousehighlighter-kr@kravhuravhu.github.io",
+  "name": "Mouse Highlighter",
+  "description": "Animated blue pulse around the mouse pointer with toggle in the Date & Time panel.",
+  "shell-version": ["42", "43", "44", "45", "46"],
+  "version": 1
+}
