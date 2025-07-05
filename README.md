@@ -31,7 +31,7 @@ git clone https://github.com/kravhuravhu/mousehighlighter-kr.git
 ```
 
 3. Restart GNOME Shell:
-#### X11:
+#### _X11_:
 ```bash
 Alt + F2
 ```
@@ -43,7 +43,7 @@ or type this command on your terminal:
   gnome-shell --replace &
 ```
 
-#### Wayland
+#### _Wayland_:
 ```bash
   Log out and log back in
 ```
