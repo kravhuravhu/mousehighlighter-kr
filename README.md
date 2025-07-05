@@ -1,12 +1,9 @@
 📄 README.md
-markdown
-Copy
-Edit
 # Mouse Highlighter (KR Edition)
 
 **UUID:** `mousehighlighter-kr@kravhuravhu.github.io`  
 A GNOME Shell extension that shows an animated blue pulse around your mouse pointer.  
-Toggle available directly in the **Date & Time panel**, next to “Do Not Disturb”.
+Toggle available directly in the **Date & Time panel**, next to “Do Not Disturb button”.
 
 ---
 
@@ -24,45 +21,62 @@ Toggle available directly in the **Date & Time panel**, next to “Do Not Distur
 1. Clone or download this repository into your local GNOME Shell extensions folder:
 
 ```bash
-git clone https://github.com/kravhuravhu/mousehighlighter-kr.git \
+git clone https://github.com/kravhuravhu/mousehighlighter-kr.git
+```
+
+2. Copy or move the directory to:
+
+```bash
   ~/.local/share/gnome-shell/extensions/mousehighlighter-kr@kravhuravhu.github.io
-Restart GNOME Shell:
+```
 
-X11:
-Alt + F2 → type r → press Enter
+3. Restart GNOME Shell:
+#### X11:
+```bash
+Alt + F2
+```
+```bash
+type → r → press Enter
+```
+or type this command on your terminal:
+```bash
+  gnome-shell --replace &
+```
 
-Wayland:
-Log out and log back in
+#### Wayland
+```bash
+  Log out and log back in
+```
 
-Enable the extension:
+4. Enable the extension:
+```bash
+  gnome-extensions enable mousehighlighter-kr@kravhuravhu.github.io
+```
 
-bash
-Copy
-Edit
-gnome-extensions enable mousehighlighter-kr@kravhuravhu.github.io
-📁 File Structure
-graphql
-Copy
-Edit
+---
+
+## 📁 File Structure
+```bash
 mousehighlighter-kr@kravhuravhu.github.io/
 ├── extension.js
 ├── highlight.js
 ├── style.css
 ├── metadata.json
 └── README.md
-🧪 Tested On
-GNOME Shell 42–45
+```
 
+## 🧪 Tested On
+```bash
+  GNOME Shell 46
+  Ubuntu 24.04.2 LTS
+  Dell Latitude 7410
+```
 X11 and Wayland (note: pointer tracking may vary on Wayland)
-
-🛠 Author
-Made by Khuliso J. Ravhuravhu
-This is part of a growing collection of custom GNOME extensions.
-
-yaml
-Copy
-Edit
 
 ---
 
-Would you like to include a screenshot or GIF section as well? Or a badge for GNOME Shell Extensions (EGO) when you publish?
+## 🛠 Author
+##### Made by Khuliso J. Ravhuravhu
+- This is part of a growing collection of custom GNOME extensions.
+
+---
