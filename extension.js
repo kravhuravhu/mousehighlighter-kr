@@ -1,49 +1,58 @@
-const Main = imports.ui.main;
-const PanelMenu = imports.ui.panelMenu;
-const PopupMenu = imports.ui.popupMenu;
-const St = imports.gi.St;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const { addHighlighter, removeHighlighter } = Me.imports.highlight;
+import Highlighter from './highlight.js';
 
-let toggleSwitch;
-let highlighterActive = false;
-
-function toggleHighlighter() {
-    highlighterActive = !highlighterActive;
-    if (highlighterActive) {
-        addHighlighter();
-    } else {
-        removeHighlighter();
+export default class MouseHighlighterExtension extends Extension {
+    constructor(metadata) {
+        super(metadata);
+        this._toggleSwitch = null;
+        this._highlighterActive = false;
+        this._highlighter = new Highlighter();
     }
-}
 
-function addToggleToDateMenu() {
-    const calendarMenu = Main.panel.statusArea.dateMenu;
-    if (!calendarMenu) return;
+    _addToggleToDateMenu() {
+        const calendarMenu = Main.panel.statusArea.dateMenu;
+        if (!calendarMenu) return;
 
-    toggleSwitch = new PopupMenu.PopupSwitchMenuItem("Mouse Highlighter", false);
-    toggleSwitch.connect('toggled', () => {
-        toggleHighlighter();
-    });
+        this._toggleSwitch = new PopupMenu.PopupSwitchMenuItem("Mouse Highlighter", false);
+        this._toggleSwitch.connect('toggled', item => {
+            this._highlighterActive = item.state;
 
-    calendarMenu.menu.addMenuItem(toggleSwitch, 1);
-}
+            if (this._highlighterActive) {
+                this._highlighter.enable();
+            } else {
+                this._highlighter.disable();
+            }
+        });
 
-function removeToggleFromDateMenu() {
-    if (toggleSwitch && toggleSwitch.destroy) {
-        toggleSwitch.destroy();
-        toggleSwitch = null;
+        const dndItem = calendarMenu._dndToggle;
+        const parentBox = dndItem?.get_parent();
+
+        if (parentBox && parentBox.insert_child_at_index) {
+            parentBox.insert_child_at_index(
+                this._toggleSwitch.actor,
+                parentBox.get_children().indexOf(dndItem) + 1
+            );
+        } else {
+            calendarMenu.menu.addMenuItem(this._toggleSwitch, 1);
+        }
     }
-}
 
-function init() {}
+    _removeToggleFromDateMenu() {
+        if (this._toggleSwitch) {
+            this._toggleSwitch.destroy();
+            this._toggleSwitch = null;
+        }
+    }
 
-function enable() {
-    addToggleToDateMenu();
-}
+    enable() {
+        this._addToggleToDateMenu();
+    }
 
-function disable() {
-    removeHighlighter();
-    removeToggleFromDateMenu();
+    disable() {
+        this._removeToggleFromDateMenu();
+        this._highlighter.disable();
+    }
 }
