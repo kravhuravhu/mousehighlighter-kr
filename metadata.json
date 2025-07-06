@@ -1,7 +1,13 @@
 {
   "uuid": "mousehighlighter-kr@kravhuravhu.github.io",
-  "name": "Mouse Highlighter",
+  "name": "Mouse Highlighter (Kr-Edition)",
   "description": "Animated blue pulse around the mouse pointer with toggle in the Date & Time panel.",
-  "shell-version": ["42", "43", "44", "45", "46"],
-  "version": 1
+  "shell-version": ["45", "46"],
+  "url": "https://github.com/kravhuravhu/mousehighlighter-kr/",
+  "version": 1,
+  "stylesheet": "stylesheet.css",
+  "js-modules": [
+    {"name": "extension", "path": "extension.js"},
+    {"name": "highlight", "path": "highlight.js"}
+  ]
 }
