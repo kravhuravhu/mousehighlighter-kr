@@ -1,6 +1,6 @@
 .mouse-highlighter {
   border-radius: 50px;
-  border: 6.5px solid rgba(0, 83, 236, 0.4);
+  border: 5px solid rgba(0, 83, 236, 0.4);
   background-color: transparent;
   box-shadow: 0 0 50px rgba(0, 83, 236, 0.973);
 }

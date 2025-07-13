@@ -8,7 +8,7 @@ export default class MouseHighlighterExtension extends Extension {
     constructor(metadata) {
         super(metadata);
         this._toggleSwitch = null;
-        this._highlighterActive = false;
+        this._highlighterActive = true;
         this._highlighter = new Highlighter();
     }
 
@@ -16,7 +16,7 @@ export default class MouseHighlighterExtension extends Extension {
         const calendarMenu = Main.panel.statusArea.dateMenu;
         if (!calendarMenu) return;
 
-        this._toggleSwitch = new PopupMenu.PopupSwitchMenuItem("Mouse Highlighter", false);
+        this._toggleSwitch = new PopupMenu.PopupSwitchMenuItem("Mouse Highlighter", true); // Changed to true by default
         this._toggleSwitch.connect('toggled', item => {
             this._highlighterActive = item.state;
 
@@ -49,6 +49,7 @@ export default class MouseHighlighterExtension extends Extension {
 
     enable() {
         this._addToggleToDateMenu();
+        this._highlighter.enable();
     }
 
     disable() {
