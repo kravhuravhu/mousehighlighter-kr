@@ -16,7 +16,7 @@ export default class MouseHighlighterExtension extends Extension {
         const calendarMenu = Main.panel.statusArea.dateMenu;
         if (!calendarMenu) return;
 
-        this._toggleSwitch = new PopupMenu.PopupSwitchMenuItem("Mouse Highlighter", true); // Changed to true by default
+        this._toggleSwitch = new PopupMenu.PopupSwitchMenuItem("Mouse Highlighter", true);
         this._toggleSwitch.connect('toggled', item => {
             this._highlighterActive = item.state;
 

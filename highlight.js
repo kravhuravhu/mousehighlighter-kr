@@ -20,13 +20,14 @@ export default class Highlighter {
             return;
         }
 
+        const size = 57;
         log('[Highlighter] Creating pulse actor (mouse follower)');
         this._pulseActor = new St.Widget({
             style_class: 'mouse-highlighter',
             reactive: false,
             track_hover: false,
-            width: 80,
-            height: 80,
+            width: size,
+            height: size,
             x_align: Clutter.ActorAlign.CENTER,
             y_align: Clutter.ActorAlign.CENTER
         });
@@ -36,7 +37,7 @@ export default class Highlighter {
 
         this._timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 16, () => {
             const [x, y] = global.get_pointer();
-            this._pulseActor.set_position(x - 40, y - 40);
+            this._pulseActor.set_position(x - size / 2, y - size / 2);
             return GLib.SOURCE_CONTINUE;
         });
         log('[Highlighter] Mouse tracker timeout set');
@@ -80,16 +81,19 @@ export default class Highlighter {
 
     _showClickPulse(x, y) {
         log(`[Highlighter] Creating click pulse at (${x}, ${y})`);
-        
+
+        const startSize = 57;
+        const endSize = 105;
+
         const pulse = new St.Widget({
             name: 'click-pulse',
             reactive: false,
             can_focus: false,
             track_hover: false,
-            width: 80,
-            height: 80,
-            x: x - 40,
-            y: y - 40,
+            width: startSize,
+            height: startSize,
+            x: x - startSize / 2,
+            y: y - startSize / 2,
             opacity: 255
         });
 
@@ -104,10 +108,10 @@ export default class Highlighter {
         log('[Highlighter] Starting click pulse animation');
 
         pulse.ease({
-            width: 150,
-            height: 150,
-            x: x - 75,
-            y: y - 75,
+            width: endSize,
+            height: endSize,
+            x: x - endSize / 2,
+            y: y - endSize / 2,
             opacity: 0,
             duration: 500,
             mode: Clutter.AnimationMode.EASE_OUT_QUAD,
