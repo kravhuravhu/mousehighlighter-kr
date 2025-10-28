@@ -49,6 +49,11 @@ or type this command on your terminal:
 ```
 
 4. Enable the extension:
+####_Rename The Folder To_:
+```
+mousehighlighter-kr@kravhuravhu.github.io
+```
+#####_And then run_:
 ```bash
   gnome-extensions enable mousehighlighter-kr@kravhuravhu.github.io
 ```
