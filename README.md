@@ -29,6 +29,10 @@ git clone https://github.com/kravhuravhu/mousehighlighter-kr.git
 ```bash
   ~/.local/share/gnome-shell/extensions/mousehighlighter-kr@kravhuravhu.github.io
 ```
+#### _Rename The Folder To_:
+```
+mousehighlighter-kr@kravhuravhu.github.io
+```
 
 3. Restart GNOME Shell:
 #### _X11_:
@@ -49,11 +53,6 @@ or type this command on your terminal:
 ```
 
 4. Enable the extension:
-####_Rename The Folder To_:
-```
-mousehighlighter-kr@kravhuravhu.github.io
-```
-#####_And then run_:
 ```bash
   gnome-extensions enable mousehighlighter-kr@kravhuravhu.github.io
 ```
